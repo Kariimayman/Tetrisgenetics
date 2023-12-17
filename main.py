@@ -278,31 +278,31 @@ if __name__ == "__main__":
         solution = [random.randint(0, 10) for _ in range(5)]
         population.append(solution)
 
-    # print_all_forms()
-    # env = TetrisEnv()
-    # env.set_seed(5132)
-    # for generation in range(5):
-    #     populationscores = []
-    #     for chromosome in population:
-    #         total_score, states, rate_rot, pieces, msg = env.run(scoring_function, chromosome, 600, True)
-    #         print(total_score)
-    #         populationscores.append(total_score)
-    #     sorted_indices = np.argsort(populationscores)[::-1]
-    #     max_indices = sorted_indices[:4]
-    #     newchromosome1 = population[max_indices[0]][:3] + population[max_indices[1]][2:]
-    #     newchromosome2 = population[max_indices[2]][:3] + population[max_indices[3]][2:]
-    #     if newchromosome1 in population and newchromosome2 in population:
-    #         break;
-    #     population[sorted_indices[-1]] = newchromosome1
-    #     population[sorted_indices[-2]] = newchromosome2
-    # bestchromosome = population[sorted_indices[0]]
-    # print(populationscores)
-    # print("best chromosome : " ,end = "")
-    # print(bestchromosome,end = "")
-    # print("with score of : ", end="")
-    # print(populationscores[sorted_indices[0]])
-    #
-    # train
+    print_all_forms()
+    env = TetrisEnv()
+    env.set_seed(5132)
+    for generation in range(5):
+        populationscores = []
+        for chromosome in population:
+            total_score, states, rate_rot, pieces, msg = env.run(scoring_function, chromosome, 600, True)
+            print(total_score)
+            populationscores.append(total_score)
+        sorted_indices = np.argsort(populationscores)[::-1]
+        max_indices = sorted_indices[:4]
+        newchromosome1 = population[max_indices[0]][:3] + population[max_indices[1]][2:]
+        newchromosome2 = population[max_indices[2]][:3] + population[max_indices[3]][2:]
+        if newchromosome1 in population and newchromosome2 in population:
+            break;
+        population[sorted_indices[-1]] = newchromosome1
+        population[sorted_indices[-2]] = newchromosome2
+    bestchromosome = population[sorted_indices[0]]
+    print(populationscores)
+    print("best chromosome : " ,end = "")
+    print(bestchromosome,end = "")
+    print("with score of : ", end="")
+    print(populationscores[sorted_indices[0]])
+
+    train
     from Visor import BoardVision
     import time
 
